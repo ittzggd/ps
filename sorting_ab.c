@@ -46,9 +46,9 @@ void	from_a_to_b(t_stack *stack_a, t_stack *stack_b, int chunk)
 		return ;
 	num = 0;
 	head = &stack_a->header_node;
-	top = head->next;
 	while(stack_a->current_element_count > 0)
 	{
+		top = head->next;
 		if(top->index <= num)
 		{
 			pb(stack_a, stack_b);

@@ -43,10 +43,10 @@ void indexing_stack_a(t_stack *stack_a)
 	new_node = head->prev;
 	curr = head->next;
 	i = 0;
-	while(i < stack_a->current_element_count)
+	while(i < stack_a->current_element_count - 1)
 	{
 		if(new_node->data == curr->data)
-			return ;
+			ft_error();
 		else if(new_node->data > curr->data)
 			new_node->index++;
 		else if(new_node->data < curr->data)
