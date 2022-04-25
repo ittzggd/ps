@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   process_arg.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hejang <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/25 10:59:57 by hejang            #+#    #+#             */
+/*   Updated: 2022/04/25 19:36:15 by hejang           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include"push_swap.h"
 
 void	change_arg(int argc, char **argv, t_stack *stack_a)
@@ -9,13 +21,13 @@ void	change_arg(int argc, char **argv, t_stack *stack_a)
 	t_stack_node	new_node;
 
 	i = 1;
-	while(i < argc)
+	while (i < argc)
 	{
 		j = 0;
 		s_num = ft_split(argv[i], 32);
-		if(*s_num == NULL)
+		if (*s_num == NULL)
 			return ;
-		while(s_num[j] != NULL)
+		while (s_num[j] != NULL)
 		{
 			num = ft_atoi(s_num[j]);
 			new_node.index = 0;
@@ -24,15 +36,15 @@ void	change_arg(int argc, char **argv, t_stack *stack_a)
 			new_node.next = NULL;
 			push_stack_a(stack_a, new_node);
 			indexing_stack_a(stack_a);
+			free(s_num[j]);
 			j++;
 		}
-		free(s_num[j]);
+		free(s_num);
 		i++;
 	}
-	free(s_num);
 }
 
-void indexing_stack_a(t_stack *stack_a)
+void	indexing_stack_a(t_stack *stack_a)
 {
 	int				i;
 	t_stack_node	*head;
@@ -43,13 +55,13 @@ void indexing_stack_a(t_stack *stack_a)
 	new_node = head->prev;
 	curr = head->next;
 	i = 0;
-	while(i < stack_a->current_element_count - 1)
+	while (i < stack_a->current_element_count - 1)
 	{
-		if(new_node->data == curr->data)
+		if (new_node->data == curr->data)
 			ft_error();
-		else if(new_node->data > curr->data)
+		else if (new_node->data > curr->data)
 			new_node->index++;
-		else if(new_node->data < curr->data)
+		else if (new_node->data < curr->data)
 			curr->index++;
 		curr = curr->next;
 		i++;

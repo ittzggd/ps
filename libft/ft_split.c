@@ -6,7 +6,7 @@
 /*   By: hejang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 01:05:42 by hejang            #+#    #+#             */
-/*   Updated: 2021/12/15 16:26:21 by hejang           ###   ########.fr       */
+/*   Updated: 2022/04/25 19:43:10 by hejang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	**ft_split2(char const *s, char c, char **str)
 			k = 0;
 			str[j] = (char *)malloc(sizeof(char) * (get_len(s, c) + 1));
 			if (!str[j])
-				return (free_all(str));
+				return (0);
 			while (*s != c && *s)
 				str[j][k++] = *s++;
 			str[j++][k] = '\0';

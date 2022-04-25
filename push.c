@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hejang <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/25 11:00:26 by hejang            #+#    #+#             */
+/*   Updated: 2022/04/25 11:38:20 by hejang           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include"push_swap.h"
 
 t_stack_node	*get_top(t_stack *from)
@@ -7,13 +19,13 @@ t_stack_node	*get_top(t_stack *from)
 	t_stack_node	*bottom;
 	t_stack_node	*p_node;
 
-	if(from->current_element_count == 0)
+	if (from->current_element_count == 0)
 		return (NULL);
 	head = &from->header_node;
-	p_node	= head->next;
+	p_node = head->next;
 	top = head->next;
 	bottom = head->prev;
-	if(from->current_element_count == 1)
+	if (from->current_element_count == 1)
 	{
 		head->next = NULL;
 		head->prev = NULL;
@@ -30,15 +42,14 @@ t_stack_node	*get_top(t_stack *from)
 	return (p_node);
 }
 
-
 int	push(t_stack *to, t_stack_node	*p_node)
 {
 	t_stack_node	*head;
 
-	if(to == NULL || p_node == NULL)
+	if (to == NULL || p_node == NULL)
 		return (0);
 	head = &to->header_node;
-	if(to->current_element_count == 0)
+	if (to->current_element_count == 0)
 	{
 		head->next = p_node;
 		head->prev = p_node;
@@ -58,20 +69,21 @@ int	push(t_stack *to, t_stack_node	*p_node)
 void	pa(t_stack *stack_a, t_stack *stack_b)
 {
 	t_stack_node	*element;
-	
+
 	element = get_top(stack_b);
-	if(element == NULL)
+	if (element == NULL)
 		return ;
-	if(push(stack_a, element))
+	if (push(stack_a, element))
 		printf("pa\n");
 }
 
 void	pb(t_stack *stack_a, t_stack *stack_b)
 {
 	t_stack_node	*element;
+
 	element = get_top(stack_a);
-	if(element == NULL)
+	if (element == NULL)
 		return ;
-	if(push(stack_b, element))
+	if (push(stack_b, element))
 		printf("pb\n");
 }

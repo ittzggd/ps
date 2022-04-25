@@ -6,13 +6,13 @@
 /*   By: hejang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 13:36:17 by hejang            #+#    #+#             */
-/*   Updated: 2021/12/09 13:02:05 by hejang           ###   ########.fr       */
+/*   Updated: 2022/04/25 19:44:32 by hejang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"libft.h"
 
-int	ft_toupper(int	c)
+int	ft_toupper(int c)
 {
 	if ('a' <= c && c <= 'z')
 		c = c - 32;

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   libft.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hejang <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/25 19:43:28 by hejang            #+#    #+#             */
+/*   Updated: 2022/04/25 19:45:12 by hejang           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef LIBFT_H
 # define LIBFT_H
 
@@ -11,7 +23,7 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
-int		ft_error();
+int		ft_error(void);
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
@@ -61,5 +73,5 @@ void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list	*lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
-#define ERROR	0
+# define ERROR -1
 #endif
