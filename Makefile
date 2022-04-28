@@ -13,13 +13,14 @@
 NAME = push_swap
 
 SRCS	=	list.c \
-			process_arg.c \
+			parsing_arg.c \
 			push.c \
 			reverse_rotate.c \
 			rotate.c \
 			sorting_ba.c \
 			sorting_ab.c \
 			swap.c \
+			2.c \
 			main.c
 OBJS	= $(SRCS:.c=.o)
 
@@ -31,7 +32,7 @@ RM = rm -f
 all : $(NAME)
 
 %.o : %.c
-		$(CC) $(CFLAG) -c -o $@ $<
+		$(CC) $(CFLAGS) -c -o $@ $<
 
 $(NAME) : $(OBJS)
 		$(MAKE) -C libft

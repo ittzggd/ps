@@ -21,7 +21,7 @@ OBJS	= $(SRCS:.c=.o)
 OBJS_B = $(SRCS_B:.c=.o)
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g3
 
 AR = ar
 ARFLAGS = crs
@@ -31,7 +31,7 @@ RM = rm -f
 all : $(NAME)
 
 %.o : %.c
-		$(CC) $(CFLAG) -c -o $@ $<
+		$(CC) $(CFLAGS) -c -o $@ $<
 
 $(NAME) : $(OBJS)
 		$(AR) $(ARFLAGS) $@ $^

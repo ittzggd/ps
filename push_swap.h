@@ -67,6 +67,13 @@ void			from_a_to_b(t_stack *stack_a, t_stack *stack_b, int chunk);
 int				get_max_position(t_stack *stack);
 void			from_b_to_a(t_stack *stack_a, t_stack *stack_b);
 
+int				sort_less_than_five(t_stack *stack_a);
+void			sort_two_elements(void);
+void			sort_three_elements(t_stack *stack_a);
+//void			sort_four_elements(t_stack *stack_a);
+//void			sort_five_elements(t_stack *stack_a);
+
+
 # define FALSE	0
 # define TRUE	1
 
