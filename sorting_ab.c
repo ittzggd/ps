@@ -6,7 +6,7 @@
 /*   By: hejang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 11:24:17 by hejang            #+#    #+#             */
-/*   Updated: 2022/04/25 11:55:25 by hejang           ###   ########.fr       */
+/*   Updated: 2022/04/29 23:50:17 by hejang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,21 +31,20 @@ int	check_sort(t_stack	*stack_a)
 	return (1);
 }
 
-int	sort_stack(t_stack	*stack_a)
+void	sort_stack(t_stack	*stack_a)
 {
 	int		num;
 	int		chunk;
 	t_stack	*stack_b;
 
-	if (stack_a == NULL)
-		return (-1);
 	num = 0;
 	stack_b = create_stack();
+	if (stack_a->current_element_count <= 5)
+		sort_less_than_five(stack_a, stack_b);
 	chunk = get_chunk(stack_a->current_element_count);
 	from_a_to_b(stack_a, stack_b, chunk);
 	from_b_to_a(stack_a, stack_b);
 	free(stack_b);
-	return (TRUE);
 }
 
 void	from_a_to_b(t_stack *stack_a, t_stack *stack_b, int chunk)

@@ -5,26 +5,21 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hejang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/25 11:00:26 by hejang            #+#    #+#             */
-/*   Updated: 2022/04/25 11:38:20 by hejang           ###   ########.fr       */
+/*   Created: 2022/04/29 11:02:41 by hejang            #+#    #+#             */
+/*   Updated: 2022/04/29 11:25:01 by hejang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
 
-t_stack_node	*get_top(t_stack *from)
+t_stack_node	*get_top(t_stack *from, t_stack_node *head, t_stack_node *top
+						, t_stack_node *bottom)
 {
-	t_stack_node	*head;
-	t_stack_node	*top;
-	t_stack_node	*bottom;
 	t_stack_node	*p_node;
 
 	if (from->current_element_count == 0)
 		return (NULL);
-	head = &from->header_node;
 	p_node = head->next;
-	top = head->next;
-	bottom = head->prev;
 	if (from->current_element_count == 1)
 	{
 		head->next = NULL;
@@ -69,21 +64,33 @@ int	push(t_stack *to, t_stack_node	*p_node)
 void	pa(t_stack *stack_a, t_stack *stack_b)
 {
 	t_stack_node	*element;
+	t_stack_node	*head;
+	t_stack_node	*top;
+	t_stack_node	*bottom;
 
-	element = get_top(stack_b);
+	head = &stack_b->header_node;
+	top = head->next;
+	bottom = head->prev;
+	element = get_top(stack_b, head, top, bottom);
 	if (element == NULL)
 		return ;
 	if (push(stack_a, element))
-		printf("pa\n");
+		write(1, "pa\n", 3);
 }
 
 void	pb(t_stack *stack_a, t_stack *stack_b)
 {
 	t_stack_node	*element;
+	t_stack_node	*head;
+	t_stack_node	*top;
+	t_stack_node	*bottom;
 
-	element = get_top(stack_a);
+	head = &stack_a->header_node;
+	top = head->next;
+	bottom = head->prev;
+	element = get_top(stack_a, head, top, bottom);
 	if (element == NULL)
 		return ;
 	if (push(stack_b, element))
-		printf("pb\n");
+		write(1, "pb\n", 3);
 }

@@ -6,7 +6,7 @@
 /*   By: hejang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 11:52:24 by hejang            #+#    #+#             */
-/*   Updated: 2022/04/25 11:52:53 by hejang           ###   ########.fr       */
+/*   Updated: 2022/04/29 10:57:01 by hejang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ra(t_stack	*stack_a)
 	if (stack_a == NULL)
 		return ;
 	if (rotate(stack_a) == 1)
-		printf("ra\n");
+		write(1, "ra\n", 3);
 }
 
 void	rb(t_stack *stack_b)
@@ -41,7 +41,7 @@ void	rb(t_stack *stack_b)
 	if (stack_b == NULL)
 		return ;
 	if (rotate(stack_b) == 1)
-		printf("rb\n");
+		write(1, "rb\n", 3);
 }
 
 void	rr(t_stack *stack_a, t_stack *stack_b)
@@ -49,5 +49,5 @@ void	rr(t_stack *stack_a, t_stack *stack_b)
 	if (stack_a == NULL || stack_b == NULL)
 		return ;
 	if (rotate(stack_a) == 1 || rotate(stack_b) == 1)
-		printf("rr\n");
+		write(1, "rr\n", 3);
 }

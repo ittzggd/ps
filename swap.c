@@ -6,7 +6,7 @@
 /*   By: hejang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 11:24:40 by hejang            #+#    #+#             */
-/*   Updated: 2022/04/25 11:57:16 by hejang           ###   ########.fr       */
+/*   Updated: 2022/04/29 10:58:02 by hejang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	sa(t_stack	*stack)
 	if (stack == NULL)
 		return ;
 	if (swap(stack) == 1)
-		printf("sa\n");
+		write(1, "sa\n", 3);
 }
 
 void	sb(t_stack	*stack)
@@ -48,7 +48,7 @@ void	sb(t_stack	*stack)
 	if (stack == NULL)
 		return ;
 	if (swap(stack) == 1)
-		printf("sb\n");
+		write(1, "sb\n", 3);
 }
 
 void	ss(t_stack *stack_a, t_stack *stack_b)
@@ -56,5 +56,5 @@ void	ss(t_stack *stack_a, t_stack *stack_b)
 	if (stack_a == NULL || stack_b == NULL)
 		return ;
 	if (swap(stack_a) == 1 || swap(stack_b) == 1)
-		printf("ss\n");
+		write(1, "ss\n", 3);
 }

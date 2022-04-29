@@ -6,7 +6,7 @@
 /*   By: hejang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 19:43:28 by hejang            #+#    #+#             */
-/*   Updated: 2022/04/25 19:45:12 by hejang           ###   ########.fr       */
+/*   Updated: 2022/04/30 00:05:29 by hejang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }	t_list;
-
-int		ft_error(void);
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);

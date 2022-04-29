@@ -6,7 +6,7 @@
 /*   By: hejang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 11:00:04 by hejang            #+#    #+#             */
-/*   Updated: 2022/04/25 18:14:57 by hejang           ###   ########.fr       */
+/*   Updated: 2022/04/29 23:53:42 by hejang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,31 +18,27 @@ t_stack	*create_stack(void)
 
 	new_stack = malloc(sizeof(t_stack));
 	if (new_stack == NULL)
-		return (NULL);
+		ft_error();
 	new_stack->current_element_count = 0;
 	new_stack->header_node.next = NULL;
 	new_stack->header_node.prev = NULL;
 	return (new_stack);
 }
 
-int	push_stack_a(t_stack *stack_a, t_stack_node element)
+void	push_stack_a(t_stack *stack_a, t_stack_node element)
 {
-	t_stack_node	*head;
 	t_stack_node	*curr;
 	t_stack_node	*new;
 
-	if (stack_a == NULL)
-		return (FALSE);
 	new = malloc(sizeof(t_stack_node));
 	if (new == NULL)
-		return (FALSE);
+		ft_error();
 	*new = element;
 	new->next = new;
 	new->prev = new;
-	head = &stack_a->header_node;
-	curr = head->prev;
+	curr = stack_a->header_node.prev;
 	if (stack_a->current_element_count == 0)
-		head->next = new;
+		stack_a->header_node.next = new;
 	else
 	{
 		new->next = curr->next;
@@ -50,34 +46,6 @@ int	push_stack_a(t_stack *stack_a, t_stack_node element)
 		curr->next->prev = new;
 		curr->next = new;
 	}
-	head->prev = new;
+	stack_a->header_node.prev = new;
 	stack_a->current_element_count++;
-	return (TRUE);
-}
-
-int	add_element(t_stack	*stack, int position, t_stack_node element)
-{
-	t_stack_node	*curr;
-	t_stack_node	*new;
-
-	if (stack == NULL || position > stack->current_element_count
-		|| position < 0)
-		return (FALSE);
-	new = malloc(sizeof(t_stack_node));
-	if (new == NULL)
-		return (FALSE);
-	*new = element;
-	curr = &stack->header_node;
-	while (position > 0)
-	{
-		curr = curr->next;
-		position --;
-	}
-	new->next = curr->next;
-	new->prev = curr;
-	if (new->next != NULL)
-		new->next->prev = new;
-	curr->next = new;
-	stack->current_element_count++;
-	return (TRUE);
 }

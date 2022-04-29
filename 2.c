@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hejang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/28 21:15:05 by hejang            #+#    #+#             */
-/*   Updated: 2022/04/28 21:19:05 by hejang           ###   ########.fr       */
+/*   Created: 2022/04/30 00:03:05 by hejang            #+#    #+#             */
+/*   Updated: 2022/04/30 00:53:05 by hejang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,37 +17,54 @@ void	sort_two_elements(void)
 	write(1, "sa\n", 3);
 }
 
-void	sort_three_elements(t_stack *stack_a)
+void	sort_three_elements(t_stack *stack_a, t_stack *stack_b)
 {
 	t_stack_node	*curr;
+	int				total;
 
 	curr = stack_a->header_node.next;
-	if (curr->index == stack_a->current_element_count - 3)
+	total = stack_a->current_element_count + stack_b->current_element_count;
+	if (curr->index == total - 3)
 	{
-		curr = curr->next;
-		if (curr->index == stack_a->current_element_count - 1)
-		{
-			rra(stack_a);
-			sa(stack_a);
-		}
+		first_case(stack_a, curr, total);
 	}
-	else if (curr->index == stack_a->current_element_count - 2)
+	else if (curr->index == total - 2)
 	{
-		curr = curr->next;
-		if (curr->index == stack_a->current_element_count - 3)
-			sa(stack_a);
-		else
-			rra(stack_a);
+		second_case(stack_a, curr, total);
 	}
-	else if (curr->index == stack_a->current_element_count - 1)
+	else if (curr->index == total - 1)
 	{
-		curr = curr->next;
-		if (curr->index == stack_a->current_element_count - 3)
-			ra(stack_a);
-		else
-		{
-			sa(stack_a);
-			rra(stack_a);
-		}
+		third_case(stack_a, curr, total);
+	}
+}
+
+void	first_case(t_stack *stack_a, t_stack_node *curr, int total)
+{	
+	curr = curr->next;
+	if (curr->index == total - 1)
+	{
+		rra(stack_a);
+		sa(stack_a);
+	}
+}
+
+void	second_case(t_stack *stack_a, t_stack_node *curr, int total)
+{
+	curr = curr->next;
+	if (curr->index == total - 3)
+		sa(stack_a);
+	else
+		rra(stack_a);
+}
+
+void	third_case(t_stack *stack_a, t_stack_node *curr, int total)
+{
+	curr = curr->next;
+	if (curr->index == total - 3)
+		ra(stack_a);
+	else
+	{
+		sa(stack_a);
+		rra(stack_a);
 	}
 }

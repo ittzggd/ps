@@ -6,7 +6,7 @@
 /*   By: hejang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 10:59:57 by hejang            #+#    #+#             */
-/*   Updated: 2022/04/25 19:36:15 by hejang           ###   ########.fr       */
+/*   Updated: 2022/04/29 23:44:24 by hejang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	change_arg(int argc, char **argv, t_stack *stack_a)
 {
 	int				i;
 	int				j;
-	int				num;
 	char			**s_num;
 	t_stack_node	new_node;
 
@@ -26,14 +25,10 @@ void	change_arg(int argc, char **argv, t_stack *stack_a)
 		j = 0;
 		s_num = ft_split(argv[i], 32);
 		if (*s_num == NULL)
-			return ;
+			ft_error();
 		while (s_num[j] != NULL)
 		{
-			num = ft_atoi(s_num[j]);
-			new_node.index = 0;
-			new_node.data = num;
-			new_node.prev = NULL;
-			new_node.next = NULL;
+			reset_node(&new_node, s_num[j]);
 			push_stack_a(stack_a, new_node);
 			indexing_stack_a(stack_a);
 			free(s_num[j]);
@@ -42,6 +37,17 @@ void	change_arg(int argc, char **argv, t_stack *stack_a)
 		free(s_num);
 		i++;
 	}
+}
+
+void	reset_node(t_stack_node *new_node, char *str)
+{
+	int	num;
+
+	num = ft_atoi(str);
+	new_node->index = 0;
+	new_node->data = num;
+	new_node->prev = NULL;
+	new_node->next = NULL;
 }
 
 void	indexing_stack_a(t_stack *stack_a)
